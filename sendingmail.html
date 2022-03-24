@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+<form onsubmit="myform(); reset(); return false">
+  <input type="text" placeholder="enter name" id="name">
+  <input type="text" placeholder="enter phone" id="phone">
+  <input type="text" placeholder="enter father name" id="fname">
+
+  <input type="email" name="mail" id="mail" placeholder="enter mail">
+  <button type="submit">submit</button>
+</form>
+
+
+<script src="https://smtpjs.com/v3/smtp.js">
+</script>
+<script>
+function myform(e) {
+
+  var name = document.getElementById('name').value
+  var phone = document.getElementById('phone').value
+  var fname = document.getElementById('fname').value
+  var mail = document.getElementById('mail').value
+
+  var body = `the name : ${name}  the phone : ${phone} the fname: ${fname} the mail : ${mail}`
+  Email.send({
+    
+    Host : "smtp.gmail.com",
+    Username : "saini10100@gmail.com",
+    Password : "ryupqsppkkhbbvgw",
+    To : 'saini10100@gmail.com',
+    From : mail,
+    Subject : "my form data",
+    Body : body
+}).then(
+  message => alert("form done")
+);
+}
+</script>
+</body>
+
+</html>
